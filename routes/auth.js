@@ -5,16 +5,16 @@ import User from "../models/User.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-  try {
+   try {
     const {
       name,
       email,
       password,
-      phoneNum,
-      Year,
-      Major,
-      City,
-      State,
+      phone,
+      year,
+      major,
+      city,
+      state,
     } = req.body;
 
     const existing = await User.findOne({ email });
@@ -28,11 +28,11 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password,
-      phoneNum,
-      Year,
-      Major,
-      City,
-      State,
+      phoneNum: phone,
+      Year: year,
+      Major: major,
+      City: city,
+      State: state,
       role: "user",
     });
 
