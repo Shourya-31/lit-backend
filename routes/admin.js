@@ -1,7 +1,7 @@
 import express from 'express';
-const User = import('../models/User');
-const Point = import('../models/Point');
-const { authenticate, authorize } = import('../middleware/auth');
+import User from '../models/User.js';
+import Point from '../models/Point.js';
+import { authenticate, authorize } from '../middleware/auth.js';
 
 const router = express.Router();
 
