@@ -1,12 +1,11 @@
-
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import authRoutes from "../routes/auth.js";
-import userRoutes from "../routes/user.js";
-import adminRoutes from "../routes/admin.js";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
+import adminRoutes from "./routes/admin.js";
 
 dotenv.config();
 
@@ -23,15 +22,18 @@ app.get("/api", (req, res) => {
   res.json({ msg: "Competition Backend Running on Vercel!" });
 });
 
-
 let isConnected = false;
 async function connectDB() {
   if (isConnected) return;
-  await mongoose.connect(process.env.MONGO_URI);
-  isConnected = true;
-  console.log("MongoDB Connected");
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    isConnected = true;
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error("MongoDB error:", err);
+    throw err;
+  }
 }
-
 
 export default async function handler(req, res) {
   await connectDB();
