@@ -6,7 +6,16 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+      phoneNum,
+      Year,
+      Major,
+      City,
+      State,
+    } = req.body;
 
     const existing = await User.findOne({ email });
     if (existing) {
@@ -19,6 +28,11 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password,
+      phoneNum,
+      Year,
+      Major,
+      City,
+      State,
       role: "user",
     });
 
@@ -37,7 +51,11 @@ router.post("/register", async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        totalPoints: user.totalPoints,
+        phoneNum: user.phoneNum,
+        Year: user.Year,
+        Major: user.Major,
+        City: user.City,
+        State: user.State,
       },
     });
   } catch (err) {
@@ -45,7 +63,6 @@ router.post("/register", async (req, res) => {
     res.status(500).json({ success: false, msg: "Server error" });
   }
 });
-
 
 router.post("/login", async (req, res) => {
   try {
@@ -71,7 +88,11 @@ router.post("/login", async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        totalPoints: user.totalPoints,
+        phoneNum: user.phoneNum,
+        Year: user.Year,
+        Major: user.Major,
+        City: user.City,
+        State: user.State,
       },
     });
   } catch (err) {
