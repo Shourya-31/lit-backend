@@ -39,18 +39,15 @@ const userSchema = new mongoose.Schema(
     },
 
     major: {
-      type: String,
-      required: true,
+      type: String
     },
 
     city: {
-      type: String,
-      required: true,
+      type: String
     },
 
     state: {
-      type: String,
-      required: true,
+      type: String
     },
 
     role: {
