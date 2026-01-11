@@ -29,10 +29,10 @@ router.post("/register", async (req, res) => {
       email,
       password,
       phone,
-      Year,
-      Major,
-      City,
-      State,
+      year,
+      major,
+      city,
+      state,
       role: "user",
     });
 
@@ -52,10 +52,10 @@ router.post("/register", async (req, res) => {
         email: user.email,
         role: user.role,
         phone: user.phone,
-        Year: user.Year,
-        Major: user.Major,
-        City: user.City,
-        State: user.State,
+        year: user.year,
+        major: user.major,
+        city: user.city,
+        state: user.state,
       },
     });
   } catch (err) {
@@ -89,10 +89,10 @@ router.post("/login", async (req, res) => {
         email: user.email,
         role: user.role,
         phone: user.phone,
-        Year: user.Year,
-        Major: user.Major,
-        City: user.City,
-        State: user.State,
+        year: user.year,
+        major: user.major,
+        city: user.city,
+        state: user.state,
       },
     });
   } catch (err) {
