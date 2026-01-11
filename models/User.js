@@ -1,64 +1,75 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
+
 const userSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+
+    password: {
+      type: String,
+      required: true,
+    },
+
+    phone: {
+      type: String,
+      required: true,
+    },
+
+    college: {
+      type: String,
+      required: true,
+    },
+
+    year: {
+      type: String,
+      required: true,
+    },
+
+    major: {
+      type: String,
+      required: true,
+    },
+
+    city: {
+      type: String,
+      required: true,
+    },
+
+    state: {
+      type: String,
+      required: true,
+    },
 
     role: {
       type: String,
-      enum: ["user", "admin"],
-      default: "user",
+      enum: ['user', 'admin'],
+      default: 'user',
     },
 
-    phoneNum: {
-      type: String,
-      required: true,
+    totalPoints: {
+      type: Number,
+      default: 0,
     },
-
-    Year: {
-      type: String, 
-      required: true,
-    },
-
-    Major: {
-      type: String,
-      required: true,
-    },
-
-    City: {
-      type: String,
-      required: true,
-    },
-
-    State: {
-      type: String,
-      required: true,
-    },
-
-    totalPoints: { type: Number, default: 0 },
-
-    eventScores: [
-      {
-        eventCode: { type: String, required: true },
-        points: { type: Number, default: 0 },
-      },
-    ],
   },
   { timestamps: true }
 );
 
-
-userSchema.pre("save", async function (next) {
-  try {
-    if (!this.isModified("password")) return next();
-    this.password = await bcrypt.hash(this.password, 12);
-    next();
-  } catch (err) {
-
-  }
+userSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
+  this.password = await bcrypt.hash(this.password, 12);
 });
 
 userSchema.methods.comparePassword = async function (password) {
