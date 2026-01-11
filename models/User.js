@@ -6,12 +6,40 @@ const userSchema = new mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+
     role: {
       type: String,
       enum: ["user", "admin"],
       default: "user",
     },
+
+    phoneNum: {
+      type: String,
+      required: true,
+    },
+
+    Year: {
+      type: String, 
+      required: true,
+    },
+
+    Major: {
+      type: String,
+      required: true,
+    },
+
+    City: {
+      type: String,
+      required: true,
+    },
+
+    State: {
+      type: String,
+      required: true,
+    },
+
     totalPoints: { type: Number, default: 0 },
+
     eventScores: [
       {
         eventCode: { type: String, required: true },
@@ -21,6 +49,7 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 userSchema.pre("save", async function (next) {
   try {
