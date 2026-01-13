@@ -24,11 +24,11 @@ const userSchema = new mongoose.Schema(
     },
 
     phone: {
-      type: String
+      type: String,
     },
 
     college: {
-      type: String
+      type: String,
     },
 
     year: {
@@ -37,21 +37,39 @@ const userSchema = new mongoose.Schema(
     },
 
     major: {
-      type: String
+      type: String,
     },
 
     city: {
-      type: String
+      type: String,
     },
 
     state: {
-      type: String
+      type: String,
     },
 
     role: {
       type: String,
-      enum: ['user', 'admin'],
-      default: 'user',
+      enum: ["user", "admin"],
+      default: "user",
+    },
+
+    eventScores: {
+      type: [
+        {
+          eventCode: {
+            type: String,
+            required: true,
+            uppercase: true,
+            trim: true,
+          },
+          points: {
+            type: Number,
+            default: 0,
+          },
+        },
+      ],
+      default: [],
     },
 
     totalPoints: {
@@ -61,6 +79,7 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
