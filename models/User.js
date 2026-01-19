@@ -54,6 +54,11 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
 
+    // registeredEvents: {
+    //   type: [String],
+    //   default: []
+    // },
+
     eventScores: {
       type: [
         {
