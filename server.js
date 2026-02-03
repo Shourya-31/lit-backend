@@ -35,7 +35,7 @@ const DEFAULT_EVENTS = [
   { name: "Essay Writing", code: "ESSAY WRITING" },
   { name: "The Literary Marathon", code: "LITERARY MARATHON" },
   { name: "Debate", code: "DEBATE" },
-  { name: "The Literary Marathon", code: "LITERARY MARATHON" },
+  { name: "Quiz", code: "QUIZ" },
 ];
 
 async function seedEventsIfNeeded() {
