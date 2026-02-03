@@ -29,9 +29,13 @@ app.get("/api", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 const DEFAULT_EVENTS = [
-  { name: "Model United Nations", code: "MUN" },
-  { name: "Debate Competition", code: "DEBATE" },
+  { name: "Tube Trolls 5.0", code: "TUBE TROLLS" },
+  { name: "Storyforge Championship", code: "STORYFORGE" },
   { name: "Poetry Slam", code: "POETRY" },
+  { name: "Essay Writing", code: "ESSAY WRITING" },
+  { name: "The Literary Marathon", code: "LITERARY MARATHON" },
+  { name: "Debate", code: "DEBATE" },
+  { name: "The Literary Marathon", code: "LITERARY MARATHON" },
 ];
 
 async function seedEventsIfNeeded() {
