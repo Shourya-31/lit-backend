@@ -10,7 +10,7 @@ router.get('/leaderboard', async (req, res) => {
   const leaderboard = await User.find()
       .select('name totalPoints eventScores')
       .sort({ totalPoints: -1 })
-      .limit(30);
+      .limit(10);
       
 
   res.json({ success: true, leaderboard });
