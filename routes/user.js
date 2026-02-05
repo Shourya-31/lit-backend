@@ -9,7 +9,8 @@ const router = express.Router();
 router.get('/leaderboard', async (req, res) => {
   const leaderboard = await User.find()
       .select('name totalPoints eventScores')
-      .sort({ totalPoints: -1 });
+      .sort({ totalPoints: -1 })
+      .limit(30);
       
 
   res.json({ success: true, leaderboard });
